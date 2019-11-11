@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <title>CS Learning Center Question Queue</title>
+    <title>CCLC Question Queue</title>
 </head>
 <script>
 
@@ -27,7 +27,7 @@
         <div class='col-xs-12 col-sm-8 col-sm-offset-2'>
             <div class='bg-info'><h3>Ask A Question</h3></div>
 
-            <div>Be detailed in your description of the problem. Your Instructor, Teaching Assistant, or a CSLC Coach will respond as quickly as possible.</div>
+            <div>Be detailed in your description of the problem. Your Instructor, Teaching Assistant, or a CCLC Coach will respond as quickly as possible.</div>
             <g:form name="ask" controller="queue" action="createQuestion" onSubmit='return validate()'>
                 <input type='hidden' name="ticket" value="${ltiSession.id}"/>
 
