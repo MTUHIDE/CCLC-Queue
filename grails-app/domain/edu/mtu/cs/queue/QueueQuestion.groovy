@@ -50,7 +50,7 @@ class QueueQuestion implements MtuConstants{
         if ( hostname?.endsWith("mtu.edu") ) {
             result = "On Campus"
             if ( hostname.startsWith("cslc") ) {
-                result = "CSLC Rekhi 118"
+                result = "CCLC Rekhi 118"
             } else if ( hostname.startsWith("c") ) {
                 result = BUILDINGS[hostname.substring(1,4)] + " " + hostname.substring(5,9) + " " + hostname.substring(11,13)
             } else if (hostname.startsWith("rover")) {
