@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <title>CCLC Question Queuee</title>
+    <title>CCLC Question Queue</title>
 </head>
 <script>
 

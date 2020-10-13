@@ -374,7 +374,7 @@
                                                             </div>
 
                                                             <div class="media-body">
-                                                                <h4 class="media-heading">${answer.person.fullName}</h4>
+                                                                <h4 class="media-heading">${"answer.person.fullName"}</h4>
                                                                 <g:link base="mailto:${answer.person.eMail}?subject=[Question Queue:${question.id}]">${answer.person.eMail}</g:link>
                                                             </div>
                                                         </div>
@@ -421,7 +421,7 @@
                                 <div class="row" style="padding: 0 !important;">
                                     <div class="col-xs-1" style="font-weight:900; color: black">Date</div>
 
-                                    <div class="col-xs-3" style="font-weight:900; color: black">Student</div>
+%{--                                    <div class="col-xs-3" style="font-weight:900; color: black">Student</div>--}%
 
                                     <div class="col-xs-2" style="font-weight:900; color: black">Assignment</div>
 
@@ -441,14 +441,8 @@
 
                                             <div class="col-xs-3">
                                                 <div class="media" style="padding: 0 !important;">
-                                                    <div class="media-left">
-                                                        <img src="${question.person.imagePath}" class="media-object"
-                                                             style="width:60px">
-                                                    </div>
 
                                                     <div class="media-body">
-                                                        <h4 class="media-heading">${question.person.fullName}</h4>
-                                                        <g:link base="mailto:${question.person.eMail}?subject=[Queue:${question.id}">${question.person.eMail}</g:link>
                                                         <g:if test="${question.isHandRaised}">
                                                             <asset:image
                                                                     src="raising-hand-icon-5.svg" width="24px"/>
@@ -467,7 +461,7 @@
                                                           style="white-space: pre-wrap; overflow-wrap: break-word;">${question.message}</textarea>
                                             </div>
                                         </div>
-                                        <g:each in="${myQuestionsAndAnswers.get(question)}" var="answer">
+                                        <g:each in="${relatedQuestionsAndAnswers.get(question)}" var="answer">
                                             <div class="row"
                                                  style="padding: 5px 20px 5px 20px !important;">
                                                 <div class="container-fluid span12 border border-danger rounded-left border-3"
