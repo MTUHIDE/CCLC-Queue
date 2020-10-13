@@ -26,7 +26,7 @@
                 <span class="icon-bar"></span>
     </button>
             <a class="navbar-brand" href="/#" style="padding-bottom: 25px">
-                <asset:image src="queue_question_logo_white.svg" alt="Queue Logo"/>&nbsp;CSLC&nbsp;Question&nbsp;Queue
+                <asset:image src="queue_question_logo_white.svg" alt="Queue Logo"/>&nbsp;CCLC&nbsp;Question&nbsp;Queue
             </a>
         </div>
 
