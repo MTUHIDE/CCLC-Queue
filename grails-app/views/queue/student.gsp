@@ -63,6 +63,12 @@
                     <g:checkBox name="attention" value="${false}"/> <label for='attention'>Raise your hand.</label>
                 </div>
 
+                <div class='form-group'>
+                    <label>File Upload</label>
+                    <input type='file' name='myfile' multiple><br><br>
+                    <input type='submit'>
+                </div>
+
                 <div class='col-xs-12 btn-danger' style='display:none' id='questionError'></div>
                 <g:submitButton name="submit" value="Ask Question!" class='btn btn-success form-control'/>
             </g:form>
@@ -140,11 +146,10 @@
                                                     <button type="button" class="btn btn-info btn-lg"
                                                             data-toggle="modal"
                                                             data-target="${'#openModal' + question.id}"
-                                                            aria-label="Answer the Question"><div
-                                                            data-toggle="tooltip" title="Answer the Question"><span
-                                                                class="glyphicon glyphicon-comment"
-                                                                aria-hidden="true"></span>
-                                                    </div>
+                                                            aria-label="Answer the Question"
+                                                            data-toggle="tooltip"
+                                                            title="Answer the Question">
+                                                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
                                                     </button>
                                                 </div>
                                                 <!-- Modal -->
@@ -210,11 +215,10 @@
                                                     <g:hiddenField name="question" value="${question.id}"/>
                                                     <button type="submit" name="submit"
                                                             class="btn btn-info btn-lg"
-                                                            aria-label="Delete the Question">
-                                                        <div data-toggle="tooltip" title="Delete the Question"><span
-                                                                class="glyphicon glyphicon-trash"
-                                                                aria-hidden="true"></span>
-                                                        </div>
+                                                            aria-label="Delete the Question"
+                                                            data-toggle="tooltip"
+                                                            title="Delete the Question">
+                                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                                     </button>
                                                 </g:form>
                                             </div>
@@ -278,11 +282,10 @@
                                                     <button type="button" class="btn btn-info btn-lg"
                                                             data-toggle="modal"
                                                             data-target="${'#myModal' + question.id}"
-                                                            aria-label="Answer the Question"><div
-                                                            data-toggle="tooltip" title="Answer the Question"><span
-                                                                class="glyphicon glyphicon-comment"
-                                                                aria-hidden="true"></span>
-                                                    </div>
+                                                            aria-label="Answer the Question"
+                                                            data-toggle="tooltip"
+                                                            title="Answer the Question">
+                                                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
                                                     </button>
                                                 </div>
 
@@ -349,11 +352,10 @@
                                                     <g:hiddenField name="question" value="${question.id}"/>
                                                     <button type="submit" name="submit"
                                                             class="btn btn-info btn-lg"
-                                                            aria-label="Delete the Question">
-                                                        <div data-toggle="tooltip" title="Delete the Question"><span
-                                                                class="glyphicon glyphicon-trash"
-                                                                aria-hidden="true"></span>
-                                                        </div>
+                                                            aria-label="Delete the Question"
+                                                            data-toggle="tooltip"
+                                                            title="Delete the Question">
+                                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                                     </button>
                                                 </g:form>
                                             </div>
@@ -389,12 +391,10 @@
                                                             <g:hiddenField name="answer" value="${answer.id}"/>
                                                             <button type="submit" name="submit"
                                                                     class="btn btn-info btn-lg"
-                                                                    aria-label="Delete this Answer">
-                                                                <div data-toggle="tooltip"
-                                                                     title="Delete this Answer"><span
-                                                                        class="glyphicon glyphicon-trash"
-                                                                        aria-hidden="true"></span>
-                                                                </div>
+                                                                    aria-label="Delete this Answer"
+                                                                    data-toggle="tooltip"
+                                                                    title="Delete this Answer">
+                                                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                                             </button>
                                                         </g:form>
                                                     </div>

@@ -24,7 +24,7 @@
     <br>
     <ul class="nav nav-tabs nav-justified">
         <li class="active"><a data-toggle="tab" href="#OpenQuestions">Open Questions</a></li>
-        <li><a data-toggle="tab" href="#AnsweredQuestions">Answered Questions</a></li>
+        <li><a data-toggle="tab" href="#CourseQuestions">Course Questions</a></li>
     </ul>
 
     <div class="tab-content">
@@ -89,10 +89,10 @@
                                         <div style="padding: 5px !important;">
                                             <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
                                                     data-target="${'#openModal' + question.id}"
-                                                    aria-label="Answer the Question"><div
-                                                    data-toggle="tooltip" title="Answer the Question"><span
-                                                        class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-                                            </div>
+                                                    aria-label="Answer the Question"
+                                                    data-toggle="tooltip"
+                                                    title="Answer the Question">
+                                                    <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
                                             </button>
                                         </div>
                                         <!-- Modal -->
@@ -155,10 +155,10 @@
                                             <g:hiddenField name="question" value="${question.id}"/>
                                             <button type="submit" name="submit"
                                                     class="btn btn-info btn-lg"
-                                                    aria-label="Delete the Question">
-                                                <div data-toggle="tooltip" title="Delete the Question"><span
-                                                        class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                                                </div>
+                                                    aria-label="Delete the Question"
+                                                    data-toggle="tooltip"
+                                                    title="Delete the Question">
+                                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                             </button>
                                         </g:form>
                                     </div>
@@ -171,7 +171,7 @@
             </div>
         </div>
 
-        <div id="AnsweredQuestions" class="tab-pane fade">
+        <div id="CourseQuestions" class="tab-pane fade">
             <div class='panel panel-info'>
                 <g:if test="${answeredQuestions == null || answeredQuestions.isEmpty()}">
                     <div class='container-fluid panel-heading' style="padding: 0 !important;">
@@ -232,10 +232,10 @@
                                         <div style="padding: 5px !important;">
                                             <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
                                                     data-target="${'#myModal' + question.id}"
-                                                    aria-label="Answer the Question"><div
-                                                    data-toggle="tooltip" title="Answer the Question"><span
-                                                        class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-                                            </div>
+                                                    aria-label="Answer the Question"
+                                                    data-toggle="tooltip"
+                                                    title="Answer the Question">
+                                                    <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
                                             </button>
                                         </div>
 
@@ -299,10 +299,10 @@
                                             <g:hiddenField name="question" value="${question.id}"/>
                                             <button type="submit" name="submit"
                                                     class="btn btn-info btn-lg"
-                                                    aria-label="Delete the Question">
-                                                <div data-toggle="tooltip" title="Delete the Question"><span
-                                                        class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                                                </div>
+                                                    aria-label="Delete the Question"
+                                                    data-toggle="tooltip"
+                                                    title="Delete the Question">
+                                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                             </button>
                                         </g:form>
                                     </div>
@@ -337,11 +337,10 @@
                                                     <g:hiddenField name="answer" value="${answer.id}"/>
                                                     <button type="submit" name="submit"
                                                             class="btn btn-info btn-lg"
-                                                            aria-label="Delete this Answer">
-                                                        <div data-toggle="tooltip" title="Delete this Answer"><span
-                                                                class="glyphicon glyphicon-trash"
-                                                                aria-hidden="true"></span>
-                                                        </div>
+                                                            aria-label="Delete this Answer"
+                                                            data-toggle="tooltip"
+                                                            title="Delete this Answer">
+                                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                                     </button>
                                                 </g:form>
                                             </div>
