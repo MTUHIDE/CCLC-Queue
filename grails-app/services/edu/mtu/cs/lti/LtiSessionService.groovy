@@ -14,5 +14,4 @@ interface LtiSessionService {
     void delete(Serializable id)
 
     LtiSession save(LtiSession ltiSession)
-
 }
