@@ -121,8 +121,8 @@ environments:
             # dialect: "org.hibernate.dialect.MariaDB53Dialect"
             # dialect: "org.hibernate.dialect.MySQL57Dialect"
             dialect: "org.hibernate.dialect.MySQLDialect"
-            #      url: jdbc:mysql://localhost:3306/webta?autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=US/Eastern
-            url: jdbc:mysql://localhost:3306/webta?autoReconnect=true&useSSL=false
+               url: jdbc:mysql://localhost:3306/webta?autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=US/Eastern
+            #url: jdbc:mysql://localhost:3306/webta?autoReconnect=true&useSSL=false
             password: asdf1234
             properties:
                 pooled: true
