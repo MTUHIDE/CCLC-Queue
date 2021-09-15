@@ -23,7 +23,7 @@
 <div class="container" style="padding: 0 !important;">
     <br>
     <ul class="nav nav-tabs nav-justified">
-        <li class="active"><a data-toggle="tab" href="#OpenQuestions">Open Questions</a></li>
+        <li class="active"><a data-toggle="tab" href="#OpenQuestions">Your Open Questions</a></li>
         <li><a data-toggle="tab" href="#CourseQuestions">Course Questions</a></li>
     </ul>
 

@@ -23,8 +23,8 @@
 <div class="container" style="padding: 0 !important;">
     <br>
     <ul class="nav nav-tabs nav-justified">
-        <li class="active"><a data-toggle="tab" href="#OpenQuestions">Open Questions</a></li>
-        <li><a data-toggle="tab" href="#CourseQuestions">Course Questions</a></li>
+        <li class="active"><a data-toggle="tab" href="#OpenQuestions">Your Open Questions</a></li>
+        <li><a data-toggle="tab" href="#AnsweredQuestions">Your Answered Questions</a></li>
     </ul>
 
     <div class="tab-content">
@@ -171,7 +171,7 @@
             </div>
         </div>
 
-        <div id="CourseQuestions" class="tab-pane fade">
+        <div id="AnsweredQuestions" class="tab-pane fade">
             <div class='panel panel-info'>
                 <g:if test="${answeredQuestions == null || answeredQuestions.isEmpty()}">
                     <div class='container-fluid panel-heading' style="padding: 0 !important;">
