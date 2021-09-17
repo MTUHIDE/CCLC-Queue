@@ -16,8 +16,8 @@ info:
 
 # 2018-07-28 ureel - set session timeout
 server:
-  session:
-    timeout: 3600  #seconds
+    session:
+        timeout: 3600  #seconds
 
 # 2018-08-17 ureel
 logging:
@@ -53,22 +53,22 @@ grails:
             csv: text/csv
             form: application/x-www-form-urlencoded
             html:
-              - text/html
-              - application/xhtml+xml
+                - text/html
+                - application/xhtml+xml
             js: text/javascript
             json:
-              - application/json
-              - text/json
+                - application/json
+                - text/json
             multipartForm: multipart/form-data
             pdf: application/pdf
             rss: application/rss+xml
             text: text/plain
             hal:
-              - application/hal+json
-              - application/hal+xml
+                - application/hal+json
+                - application/hal+xml
             xml:
-              - text/xml
-              - application/xml
+                - text/xml
+                - application/xml
     urlmapping:
         cache:
             maxsize: 1000
@@ -109,18 +109,21 @@ dataSource:
     pooled: true
     jmxExport: true
     username: root
-    password: agOdnek2
+    # password: agOdnek2
 
 environments:
     # 2018-07-16 ureel: Support for PC with Grails and MySQL Database
     development:
         dataSource:
             dbCreate: update
-            driverClassName: com.mysql.jdbc.Driver
-            dialect: "org.hibernate.dialect.MySQL57Dialect"
+            driverClassName: com.mysql.cj.jdbc.Driver
+            # driverClassName: org.mariadb.jdbc.Driver
+            # dialect: "org.hibernate.dialect.MariaDB53Dialect"
+            # dialect: "org.hibernate.dialect.MySQL57Dialect"
+            dialect: "org.hibernate.dialect.MySQLDialect"
             url: jdbc:mysql://localhost:3306/webta?autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=US/Eastern
             #url: jdbc:mysql://localhost:3306/webta?autoReconnect=true&useSSL=false
-            password: agOdnek2
+            password: asdf1234
             properties:
                 pooled: true
                 jmxEnabled: true
@@ -147,16 +150,19 @@ environments:
                 logAbandoned: true # Do not use in production!
                 logValidationErrors: true # Do not use in production!
 
-  # 2018-07-16 ureel: Support for Test Environment with Grails and MySQL Database
+    # 2018-07-16 ureel: Support for Test Environment with Grails and MySQL Database
     test:
         dataSource:
             dbCreate: update
             driverClassName: com.mysql.jdbc.Driver
+            # driverClassName: org.mariadb.jdbc.Driver
+            # dialect: "org.hibernate.dialect.MariaDB53Dialect"
             # dialect: "org.hibernate.dialect.MySQL5InnoDBDialect"
-            dialect: "org.hibernate.dialect.MySQL57Dialect"
+            # dialect: "org.hibernate.dialect.MySQL57Dialect"
+            dialect: "org.hibernate.dialect.MySQLDialect"
             # url: jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
             url: jdbc:mysql://localhost:3306/webta?autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=US/Eastern
-            password: agOdnek2
+            password: KzAGY!P4ZXqH
             properties:
                 pooled: true
                 jmxEnabled: true
@@ -177,16 +183,20 @@ environments:
                 jdbcInterceptors: ConnectionState
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
 
-  # 2018-07-16 ureel
+    # 2018-07-16 ureel
     production:
         dataSource:
             dbCreate: none
-            driverClassName: org.mariadb.jdbc.Driver
-            dialect: "org.hibernate.dialect.MariaDB53Dialect"
+            driverClassName: com.mysql.jdbc.Driver
+            # driverClassName: org.mariadb.jdbc.Driver
+            # dialect: "org.hibernate.dialect.MariaDB53Dialect"
+            # dialect: "org.hibernate.dialect.MySQL57Dialect"
+            dialect: "org.hibernate.dialect.MySQLDialect"
             # url: jdbc:h2:./prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
             # url: jdbc:mysql://localhost:3306/webta?autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=US/Eastern
-            url: jdbc:mariadb://localhost:3306/webta
-            password: w2&UgAMa=uz8
+            url: jdbc:mysql://localhost:3306/webta?autoReconnect=true&useSSL=false
+            #    url: jdbc:mariadb://localhost:3306/webta
+            password: KzAGY!P4ZXqH
             properties:
                 #       pool: false # true
                 #       jmxEnabled: false # true
