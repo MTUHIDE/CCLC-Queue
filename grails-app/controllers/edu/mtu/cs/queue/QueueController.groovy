@@ -1,8 +1,14 @@
 package edu.mtu.cs.queue
 
 import javax.servlet.http.HttpServletResponse
+import java.nio.file.Files
+import java.io.File
 
 import edu.mtu.cs.canvas.CanvasService
+
+import java.util.zip.ZipEntry
+import java.util.zip.ZipOutputStream
+
 //import edu.mtu.cs.lti.LtiService
 
 import static edu.mtu.MtuConstants.LANGUAGES
@@ -337,7 +343,7 @@ class QueueController {
     }
 
     def createQuestion() {
-        LtiSession ltiSession = null;
+        LtiSession ltiSession = null
         if (params.ticket != null) {
             ltiSession = LtiSession.findById(params.ticket)
         } else if (request.getAttribute("ticket") != null) {
@@ -347,7 +353,40 @@ class QueueController {
             return false
         }
 
-        List<Assignment> assignments = [ ]
+        //Check if the student uploaded any files
+        if(request.getFiles('file').size() > 1) {
+            File tempFolder = new File("/tmp/" + ltiSession.ltiToken + ":" + new Date())
+            Files.createDirectory(tempFolder.toPath())
+
+            //Create all of the files in the /tmp directory
+            for (def f in request.getFiles('file')) {
+                String filename = f.getOriginalFilename()
+                File temp = new File(tempFolder.getPath() + "/" + filename)
+                f.transferTo(temp)
+            }
+
+            //Zip up the files that the student uploaded
+            ZipOutputStream zipFile = new ZipOutputStream(new FileOutputStream(tempFolder.getPath()+".zip"))
+            new File(tempFolder.getPath()).eachFile {file ->
+                if(file.isFile()) {
+                    zipFile.putNextEntry(new ZipEntry(file.name))
+                    def buffer = new byte[file.size()]
+                    file.withInputStream {it ->
+                        zipFile.write(buffer, 0, it.read(buffer))
+                    }
+                    zipFile.closeEntry()
+                }
+            }
+            zipFile.close()
+
+            //TODO Add the creation of the QueueFile and add it to the QueueQuestion files hasMany array
+        }
+
+
+
+        //Use question.addToFiles() when QueueQuestion is defined to add
+
+       List<Assignment> assignments = [ ]
 //        List<Assignment> assignments = canvasService.getUserAssignments(ltiSession, session)
 //                ?.sort { it.dueAt }
 //                ?.findAll { Assignment assignment -> assignment.published && assignment.dueAt >= new Date() }

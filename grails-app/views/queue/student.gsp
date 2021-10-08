@@ -28,7 +28,7 @@
             <div class='bg-info'><h3>Ask A Question</h3></div>
 
             <div>Be detailed in your description of the problem. Your Instructor, Teaching Assistant, or a CCLC Coach will respond as quickly as possible.</div>
-            <g:form name="ask" controller="queue" action="createQuestion" onSubmit='return validate()'>
+            <g:uploadForm name="ask" controller="queue" action="createQuestion" onSubmit='return validate()'>
                 <input type='hidden' name="ticket" value="${ltiSession.id}"/>
 
                 <div class='form-group'>
@@ -60,18 +60,18 @@
                     <label for='question'>Question</label>
                     <g:textArea id='question' class='form-control' name='question'
                                 placeholder='Provide as much relevant detail as possible.'/>
-                    <g:checkBox name="attention" value="${false}"/> <label for='attention'>Raise your hand.</label>
+                    <g:checkBox name="attention" value="${false}"/>
+                    <label for='attention'>Raise your hand.</label>
                 </div>
 
                 <div class='form-group'>
-                    <label>File Upload</label>
-                    <input type='file' name='myfile' multiple><br><br>
-                    <input type='submit'>
+                    <label for='file'>File Upload</label>
+                    <input class='form-control-file' type='file' name='file' multiple><br><br>
                 </div>
 
                 <div class='col-xs-12 btn-danger' style='display:none' id='questionError'></div>
                 <g:submitButton name="submit" value="Ask Question!" class='btn btn-success form-control'/>
-            </g:form>
+            </g:uploadForm>
         </div>
 
     </div>
