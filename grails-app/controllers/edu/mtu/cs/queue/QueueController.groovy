@@ -1,6 +1,8 @@
 package edu.mtu.cs.queue
 
 import javax.servlet.http.HttpServletResponse
+import java.nio.file.Paths
+import java.nio.file.Path
 import java.nio.file.Files
 import java.io.File
 
@@ -24,6 +26,7 @@ class QueueController {
     CanvasService canvasService
     QueueQuestionService queueQuestionService
     QueueAnswerService queueAnswerService
+    QueueFileService queueFileService
 
     /**
      * Signals an HTTP 401 Unauthorized error response status.
@@ -353,34 +356,9 @@ class QueueController {
             return false
         }
 
-        //Check if the student uploaded any files
-        if(request.getFiles('file').size() > 1) {
-            File tempFolder = new File("/tmp/" + ltiSession.ltiToken + ":" + new Date())
-            Files.createDirectory(tempFolder.toPath())
+        def courses = LtiSession.findAllByLtiToken(ltiSession.ltiToken).forEach({ e -> e.context_title })
 
-            //Create all of the files in the /tmp directory
-            for (def f in request.getFiles('file')) {
-                String filename = f.getOriginalFilename()
-                File temp = new File(tempFolder.getPath() + "/" + filename)
-                f.transferTo(temp)
-            }
 
-            //Zip up the files that the student uploaded
-            ZipOutputStream zipFile = new ZipOutputStream(new FileOutputStream(tempFolder.getPath()+".zip"))
-            new File(tempFolder.getPath()).eachFile {file ->
-                if(file.isFile()) {
-                    zipFile.putNextEntry(new ZipEntry(file.name))
-                    def buffer = new byte[file.size()]
-                    file.withInputStream {it ->
-                        zipFile.write(buffer, 0, it.read(buffer))
-                    }
-                    zipFile.closeEntry()
-                }
-            }
-            zipFile.close()
-
-            //TODO Add the creation of the QueueFile and add it to the QueueQuestion files hasMany array
-        }
 
 
 
@@ -390,7 +368,6 @@ class QueueController {
 //        List<Assignment> assignments = canvasService.getUserAssignments(ltiSession, session)
 //                ?.sort { it.dueAt }
 //                ?.findAll { Assignment assignment -> assignment.published && assignment.dueAt >= new Date() }
-
         String subject = params.subject
         String message = params.question != null ? params.question : subject
         if (message == null || message.isEmpty()) {
@@ -421,6 +398,47 @@ class QueueController {
                 , message: message
         )
         queueQuestionService.save(question)
+
+        //Check if the student uploaded any files
+        if(request.getFiles('file').size() > 1) {
+            File tempFolder = new File("/tmp/" + ltiSession.ltiToken + ":" + new Date())
+            Files.createDirectory(tempFolder.toPath())
+
+            //Create all of the files in the /tmp directory
+            for (def f in request.getFiles('file')) {
+                String filename = f.getOriginalFilename()
+                File temp = new File(tempFolder.getPath() + "/" + filename)
+                f.transferTo(temp)
+            }
+
+            //Zip up the files that the student uploaded
+            ZipOutputStream zipFile = new ZipOutputStream(new FileOutputStream(tempFolder.getPath()+".zip"))
+            new File(tempFolder.getPath()).eachFile {file ->
+                if(file.isFile()) {
+                    zipFile.putNextEntry(new ZipEntry(file.name))
+                    def buffer = new byte[file.size()]
+                    file.withInputStream {it ->
+                        zipFile.write(buffer, 0, it.read(buffer))
+                    }
+                    zipFile.closeEntry()
+                }
+            }
+            zipFile.close()
+
+            String path = tempFolder.getPath()+".zip"
+            byte[] bytes = Files.readAllBytes(Paths.get(path))
+            String filename = path.split('/')[-1]
+            QueueFile files = new QueueFile(
+                    question: question,
+                    fileData: bytes,
+                    fileMimeType: "zip",
+                    fileName: filename,
+                    answer: null
+            )
+            //TODO Add the creation of the QueueFile and add it to the QueueQuestion files hasMany array
+            question.files.add(files)
+            queueFileService.save(files)
+        }
 
         List<QueueQuestion> openQuestions = []
         List<QueueQuestion> answeredQuestions = []

@@ -43,7 +43,7 @@ CREATE TABLE `queue_answer` (
   CONSTRAINT `FK691v8k96v7f6xxda71xqv0f3t` FOREIGN KEY (`person_id`) REFERENCES `person` (`id`),
   CONSTRAINT `FKj5jaa345br1e6xo35s3i2ea4w` FOREIGN KEY (`deleted_by_id`) REFERENCES `person` (`id`),
   CONSTRAINT `FKt47q9ssg76t7d8liwwbst0e58` FOREIGN KEY (`question_id`) REFERENCES `queue_question` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPRESSED;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 ROW_FORMAT=dynamic;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -87,7 +87,7 @@ CREATE TABLE `queue_question` (
   KEY `FKl9qf23bu6vi17tiq5wm0a1s6j` (`person_id`),
   CONSTRAINT `FK3t6na5ismvo4j6wu99it7ncrs` FOREIGN KEY (`deleted_by_id`) REFERENCES `person` (`id`),
   CONSTRAINT `FKl9qf23bu6vi17tiq5wm0a1s6j` FOREIGN KEY (`person_id`) REFERENCES `person` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPRESSED;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 ROW_FORMAT=dynamic;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -122,7 +122,7 @@ CREATE TABLE `queue_question_file` (
   KEY `FKx6laffr4htpbm7qi3bww73kl` (`question_id`),
   CONSTRAINT `FKljls0xafv4ldart4bn7x8qjia` FOREIGN KEY (`answer_id`) REFERENCES `queue_answer` (`id`),
   CONSTRAINT `FKx6laffr4htpbm7qi3bww73kl` FOREIGN KEY (`question_id`) REFERENCES `queue_question` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPRESSED;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=dynamic;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

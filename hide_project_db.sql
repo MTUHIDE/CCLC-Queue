@@ -36,7 +36,7 @@ CREATE TABLE `person` (
   `full_name` varchar(256) NOT NULL,
   `e_mail` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=410 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPRESSED;
+) ENGINE=InnoDB AUTO_INCREMENT=410 DEFAULT CHARSET=latin1 ROW_FORMAT=dynamic;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +68,7 @@ CREATE TABLE `lti_client` (
   `client_id` varchar(256) NOT NULL,
   `lms_domain` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPRESSED;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 ROW_FORMAT=dynamic;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -152,7 +152,7 @@ CREATE TABLE `lti_session` (
   PRIMARY KEY (`id`),
   KEY `FK8b77pp1vp024kfrr9okigiu9v` (`person_id`),
   CONSTRAINT `FK8b77pp1vp024kfrr9okigiu9v` FOREIGN KEY (`person_id`) REFERENCES `person` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=528 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPRESSED;
+) ENGINE=InnoDB AUTO_INCREMENT=528 DEFAULT CHARSET=latin1 ROW_FORMAT=dynamic;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -177,7 +177,7 @@ CREATE TABLE `lti_session_params` (
   `params_object` varchar(256) DEFAULT NULL,
   `params_idx` varchar(256) DEFAULT NULL,
   `params_elt` varchar(256) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPRESSED;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=dynamic;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -208,7 +208,7 @@ CREATE TABLE `lti_token` (
   PRIMARY KEY (`id`),
   KEY `FKkir12iw33x1d10iw0yfr3bgu` (`person_id`),
   CONSTRAINT `FKkir12iw33x1d10iw0yfr3bgu` FOREIGN KEY (`person_id`) REFERENCES `person` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=312 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPRESSED;
+) ENGINE=InnoDB AUTO_INCREMENT=312 DEFAULT CHARSET=latin1 ROW_FORMAT=dynamic;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -286,7 +286,7 @@ CREATE TABLE `queue_question` (
   KEY `FKl9qf23bu6vi17tiq5wm0a1s6j` (`person_id`),
   CONSTRAINT `FK3t6na5ismvo4j6wu99it7ncrs` FOREIGN KEY (`deleted_by_id`) REFERENCES `person` (`id`),
   CONSTRAINT `FKl9qf23bu6vi17tiq5wm0a1s6j` FOREIGN KEY (`person_id`) REFERENCES `person` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPRESSED;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 ROW_FORMAT=dynamic;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -327,7 +327,7 @@ CREATE TABLE `queue_answer` (
   CONSTRAINT `FK691v8k96v7f6xxda71xqv0f3t` FOREIGN KEY (`person_id`) REFERENCES `person` (`id`),
   CONSTRAINT `FKj5jaa345br1e6xo35s3i2ea4w` FOREIGN KEY (`deleted_by_id`) REFERENCES `person` (`id`),
   CONSTRAINT `FKt47q9ssg76t7d8liwwbst0e58` FOREIGN KEY (`question_id`) REFERENCES `queue_question` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPRESSED;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 ROW_FORMAT=dynamic;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
