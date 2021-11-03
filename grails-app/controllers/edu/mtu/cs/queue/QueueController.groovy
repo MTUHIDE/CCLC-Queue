@@ -436,8 +436,8 @@ class QueueController {
                     answer: null
             )
             //TODO Add the creation of the QueueFile and add it to the QueueQuestion files hasMany array
-            question.files.add(files)
             queueFileService.save(files)
+            question.addToFiles(files)
         }
 
         List<QueueQuestion> openQuestions = []
